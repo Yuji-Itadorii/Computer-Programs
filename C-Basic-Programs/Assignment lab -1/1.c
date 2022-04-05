@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
+#include<string.h>
+
 int main(){
     int num1 , num2;
     printf("Enter the two number's : ");
