@@ -1,19 +1,16 @@
 #include<stdio.h>
 
-void stringSort(char arr[] , int size){
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size-i; j++)
-        {
-            if (arr[j]>arr[j+1])
-            {
-                char temp = arr[i];
-                arr[i]=arr[j];
-                arr[j]=temp;
+void stringSort(char arr[] , int n){
+     int i, j;
+    for (i = 0; i < n - 1; i++){
+        for (j = 0; j < n - i - 1; j++){
+            if (arr[j-1] > arr[j]){
+                char temp;
+                temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
             }
-            
         }
-        
     }
     
 }
@@ -22,14 +19,13 @@ void get_string_row(int row , int coloumn , char arr[row][coloumn]){
     printf("The Row-wise sorted string is : \n");
     for (int i = 0; i < row; i++)
     {
-        char str[row];
+        char str1[row];
         for (int j = 0; j < coloumn; j++)
         {
-            str[j] = arr[i][j];
+            str1[j] = arr[i][j];
         }
-        stringSort(str, 3);
-        printf("%s\n",str);
-        
+        stringSort(str1, 3);
+        printf("%s\n",str1);
     }
     
 }
