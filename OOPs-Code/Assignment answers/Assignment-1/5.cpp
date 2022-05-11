@@ -4,11 +4,11 @@
 #include<vector>
 using namespace std;
 class student{
-    int rollno;
     int fee;
     string name;
-    static int count;
     public:
+    int rollno;
+    static int count;
 
     void set(int a , string s){
         fee = a;
@@ -23,23 +23,40 @@ class student{
         cout<<"Name is : "<<name<<endl;
     }
 
-    void addStudent(int f , string n){
-        fee = f;
-        name = n;
-        rollno = count;
-        count++;
-    }
+    friend void delete_Student( student arr[] , int r , int *size);
 };
+
+void delete_Student( student arr[] , int r , int *size){
+    if (r==*size)
+    {
+        *size = *size-1;
+        return;
+    }
+    
+    for (int i = 0; i < *size; i++)
+    {
+        if (i+1==r)
+        {
+            for (int j = i; j < *size-1; j++)
+            {
+                arr[j] = arr[j+1];
+                arr[j].rollno = arr[j].rollno - 1;
+            }
+            *size = *size-1;
+            return;
+        }
+        
+    }
+}
 
 int student ::count=1;
 int main(){
     int size;
     cout<<"Enter the number of student : ";
     cin>>size;
-    vector <student> v(size);
-    // student arr[size];
+    student arr[size];
 
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i < size; i++)
     {
         int F ;
         cout<<"enter the fees of student no. : "<<i+1<<endl;
@@ -47,12 +64,24 @@ int main(){
         string S;
         cout<<"enter the name of student no. : "<<i+1<<endl;
         cin>>S;
-        v[i].set(F,S);
+        arr[i].set(F,S);
     }
     
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 0; i <size; i++)
     {
-        v[i].display();
+        arr[i].display();
+        cout<<endl;
+    }
+
+    cout<<"Enter the roll no. that you want to delete : ";
+    int r ;
+    cin>>r;
+
+    delete_Student(arr, r , &size);
+
+    for (int i = 0; i < size; i++)
+    {
+        arr[i].display();
         cout<<endl;
     }
 
