@@ -1,8 +1,8 @@
-/* C++ implementation of QuickSort */
 #include <stdio.h>
-// A utility function to swap two elements
+int count;
 void swap(int* a, int* b)
 {
+	count++;
 	int t = *a;
 	*a = *b;
 	*b = t;
@@ -12,14 +12,13 @@ void swap(int* a, int* b)
 int partition (int arr[], int low, int high)
 {
 	int pivot = arr[high]; // pivot
-	int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
+	int i = (low - 1); 
 
 	for (int j = low; j <= high - 1; j++)
 	{
-		// If current element is smaller than the pivot
 		if (arr[j] < pivot)
 		{
-			i++; // increment index of smaller element
+			i++; 
 			swap(&arr[i], &arr[j]);
 		}
 	}
@@ -32,18 +31,13 @@ void quickSort(int arr[], int low, int high)
 {
 	if (low < high)
 	{
-		/* pi is partitioning index, arr[p] is now
-		at right place */
+		
 		int pi = partition(arr, low, high);
-
-		// Separately sort elements before
-		// partition and after partition
 		quickSort(arr, low, pi - 1);
 		quickSort(arr, pi + 1, high);
 	}
 }
 
-/* Function to print an array */
 void printArray(int arr[], int size)
 {
 	int i;
@@ -52,14 +46,13 @@ void printArray(int arr[], int size)
 		printf("\n");
 }
 
-// Driver Code
 int main()
 {
-	int arr[] = {10, 7, 8, 9, 1, 5};
+	int arr[] = {10, 7, 8, 10, 1, 5};
 	int n = sizeof(arr) / sizeof(arr[0]);
 	quickSort(arr, 0, n - 1);
 	printArray(arr, n);
+	printf("\nThe number of swaps are : %d", count);
 	return 0;
 }
 
-// This code is contributed by rathbhupendra

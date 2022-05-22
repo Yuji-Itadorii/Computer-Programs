@@ -8,7 +8,6 @@ struct student
 void bubblesort(int size ,struct student arr[size]){
     for (int i = 0; i < size-1; i++)
     {
-        count++;
         for (int j = 0; j < size-i-1; j++)
         {
             if (arr[j].faculty_ID>arr[j+1].faculty_ID)

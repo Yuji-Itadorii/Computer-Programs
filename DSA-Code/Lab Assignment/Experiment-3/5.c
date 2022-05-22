@@ -18,16 +18,15 @@ void merge(struct student arr[] , int l , int m , int r){
     int i =0 , j=0 , k=l;
     while (i<n1 && j <n2)
     {
+        count++;
         if (left[i]<=right[j])
         {
-            count++;
             arr[k].student_roll_no = left[i];
             i++;
             k++;
         }
         else
         {
-            count++;
             arr[k].student_roll_no = right[j];
             j++;
             k++;
@@ -54,6 +53,7 @@ void merge(struct student arr[] , int l , int m , int r){
 void mergeSort(struct student arr[] , int l ,int r){
     if (l<r)
     {
+        // count++;
         int m = l + (r-l)/2;
         mergeSort(arr , l , m);
         mergeSort(arr , m+1 , r);
