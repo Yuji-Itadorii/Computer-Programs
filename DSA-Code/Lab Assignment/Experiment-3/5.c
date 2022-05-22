@@ -84,7 +84,7 @@ int main()
 
     dispaly(size, arr);
 
-    printf("\n the time complexity is : %d", count);
+    printf("\n the no. of comparisons  : %d", count);
 
     return 0;
 }
