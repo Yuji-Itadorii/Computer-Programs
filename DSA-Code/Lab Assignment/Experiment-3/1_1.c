@@ -17,5 +17,6 @@ int main(){
     int key = 7;
     printf("%d\n",linearSearch(arr , 5 , key));
     printf("The numer of comparisons are : %d\n",count);
+    
     return 0;
 }
