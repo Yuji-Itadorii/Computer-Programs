@@ -2,7 +2,7 @@
 using namespace std;
 void left_rotate(int arr[] , int size , int n){
     int temp[n];
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < n; i++)
     temp[i] = arr[i];
 
     for (int i = n; i < size; i++)
