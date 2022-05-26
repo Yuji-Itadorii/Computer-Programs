@@ -5,7 +5,7 @@ void leader_element_Array(int arr[] , int n){
     cout<<curr_leader<<" ";
     for (int i = n-2; i >= 0; i--)
     {
-        if (arr[i]>curr_leader)
+        if (arr[i]>=curr_leader)
         {
             curr_leader=arr[i];
             cout<<curr_leader<<" ";
