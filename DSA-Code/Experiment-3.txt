@@ -1,0 +1,44 @@
+Test the following programs on
+various cases such as already sorted, reverse sorted and average sorted cases. Also verify whether the sorting algorithm
+is stable. Count the number of swaps
+and number of comparisons
+taken place.
+
+
+I.         
+Implement Linear search and Binary search
+on 1D array of Integers and also return the time complexity in all the cases
+i.e your worst case, average case, and best case.
+
+
+II.         
+WAP to implement Bubble sort on 1D array
+of Faculty structures (contains faculty_name, faculty_ID, subject_codes,
+class_names) with key as faculty_ID and also return the time complexity in all
+the cases i.e your worst case, average case, and best case.
+
+
+  III.         
+Implement Insertion and Selection sort on
+1D array of integers and also return the time complexity in all the cases i.e
+your worst case, average case, and best case.
+
+
+  IV.         
+(a) Implement Quick Sort with duplicate
+numbers in the given array/elements.
+
+
+(b)
+Implement the ascending and descending order using Quick Sort.
+
+
+(c)
+Implement Quick Sort using first/last/any random element as pivot.
+
+
+    V.         
+WAP to implement Merge Sort on 1D array of
+Student structures (contains student_name, student_roll_no, total_marks) with
+key as student_roll_no and also return the time complexity in all the cases i.e
+your worst case, average case, and best case.

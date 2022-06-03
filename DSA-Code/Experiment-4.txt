@@ -1,0 +1,35 @@
+Experiment 4 (Dynamic Memory Allocation and File Operations)
+
+
+      I.         
+WAP to store a character string in a block
+of memory space and then modify the same to store a larger string.
+
+
+    II.         
+Implement 2D Matrix multiplication by
+creating two matrix using dynamic memory allocation.
+
+
+  III.         
+WAP to store an information in array of
+structure, dynamically, and also give a function to display the current
+information. The program should give user a choice for inserting a data or to
+display the current data. Implement the program for Student structures
+(contains student_name, student_roll_no, total_marks).
+
+
+  IV.         
+Implement the above program for Employee
+structures (contains employee_name, emp_no, emp_salary).
+
+
+    V.         
+Implement the above program for Faculty
+structures (contains faculty_name, faculty_ID, subject_codes, class_names).
+
+
+  VI.         
+WAP to Create a new file, Open an existing
+file, read the file to search a given word, write into the file and close the
+file.
