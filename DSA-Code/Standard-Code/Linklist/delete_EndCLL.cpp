@@ -24,28 +24,28 @@ void printList (Node * head){
     } while (temp!=head);
 }
 
-Node * deleteEnd( Node * head){
+Node * deleteEnd( Node * tail){
 
-    if(head==NULL){
+    if(tail==NULL){
         return NULL;
     }
 
-    if (head->next==head)
+    if (tail->next==tail)
     {
-        delete head ;
+        delete tail ;
         return NULL;
     }
-    
-    Node * temp = head;
-    while (temp->next->next!=head)
-    {
-        temp=temp->next;
-    }
-    
-    Node* curr = temp->next;
-    temp->next = head;
 
-    return head;
+    int t = tail->next->data;
+    tail->next->data = tail->data;
+    tail->data = t;
+    Node * curr  = tail->next;
+    tail->next = tail->next->next;
+
+    delete curr;
+    
+
+    return tail;
 
 }
 
@@ -61,7 +61,7 @@ int main(){
     third->next = fourth;
     fourth->next = head;
 
-    head = deleteEnd(head);  //******************** TAIL POINTER IS PASSED***********************************
+    head = deleteEnd(fourth);  //******************** TAIL POINTER IS PASSED***********************************
 
     printList(head);
     
