@@ -1,0 +1,15 @@
+1. Create a link List of 3 student details
+
+2. Create a link list and insert user input data in it.
+
+3. Copy elements of an array in the link List
+
+4. Compare two single link list
+
+5.Find the intersection point of two single linklist .
+
+6.Reverse of a linklist.
+
+7.Merge two sorted single linkList.
+
+8.Multiply two polymonial with the help of linkList
