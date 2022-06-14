@@ -29,7 +29,7 @@ void printList(struct node * head){
 }
 
 
-void comapaiorList(struct node* head1 , struct node * head2){
+void insertionList(struct node* head1 , struct node * head2){
     int size1 = traverseList(head1);
     int size2 = traverseList(head2);
 
@@ -89,7 +89,7 @@ int main(){
     printList(head2);
 
     
-    comapaiorList(head1 , head2);
+    insertionList(head1 , head2);
     
     
 

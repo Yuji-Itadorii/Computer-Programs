@@ -1,0 +1,83 @@
+Experiment 5 (Singly Linked List)
+
+
+
+      I.         
+WAP to construct simple linear linked list
+using dynamic memory allocation for the given elements with the following
+functions:
+
+
+(a)
+Inserting a new node,
+
+
+(b)
+Accessing a node (finding the position wrt header),
+
+
+(c)
+Removing a node with particular key value,
+
+
+(d)
+Complete deletion of a linked list, and
+
+
+(e)
+Displaying the current list.
+
+
+(f)
+Copy the linked list and return the pointer of the new list.
+
+
+Implement
+the above program for the elements as Strings.
+
+
+    II.         
+(a) WAP to reverse a singly linked list
+using one auxiliary pointer. And try without using any auxiliary pointer.
+
+
+(b)
+WAP to swap elements in pairs in the given linked list. (e.g.:
+1->2->3->4->5->null, then result should be
+2->1->4->3->5->null.)
+
+
+  III.         
+(a) WAP to implement Stack ADT using
+Linked list with the basic operations as Create(), IsEmpty(), Push(), Pop(),
+IsFull() with appropriate prototype to a functions.
+
+
+(b)
+WAP to implement Queue ADT using Linked list with the basic functions of
+Create(), IsEmpty(), Insert(), Delete() and IsFull() with suitable prototype to
+a functions.
+
+
+  IV.         
+(a) WAP for polynomial addition and
+multiplication. Represent polynomial in linked list form with suitable data
+structure.
+
+
+(b)
+WAP to compare two polynomials. Represent polynomial in linked list form with
+suitable data structure.
+
+
+    V.         
+(a) WAP to sort singly linked list with
+Example.
+
+
+(b)
+WAP to concatenate the even elements from the two linked list.
+
+
+(c)
+WAP to find the number of occurrence of all the elements in a linked list.
