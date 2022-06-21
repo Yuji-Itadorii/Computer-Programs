@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<stdbool.h>
+#include <stdbool.h>
+#include <limits.h>
+
 struct node
 {
     int data;
@@ -42,27 +44,25 @@ void printList(struct node *head)
     }
 }
 
-void sortLinklist( struct node * head , int size){
-    struct node * temp  = head;
-    for (int i = 0; i < size - 1 && temp!=NULL; i++)
+void maxOcurrence(struct node *head, int size)
+{
+    struct node *temp = head;
+    int i= 1 , freq = 1;
+    while (temp!=NULL)
     {
         struct node * curr = temp;
-        bool swapped = false;
-        for (int j = 0; j < size - i - 1 && curr!=NULL; j++)
+        while (curr!=NULL && curr->data==curr->next->data)
         {
-            if (curr->data > curr->next->data)
-            {
-                swapped = true;
-                int temp = curr->data;
-                curr->data = curr->next->data;
-                curr->next->data = temp;
-            }
+            freq++;
             curr = curr->next;
         }
-        if (swapped == false)
-        {
-            break;
-        }
+        printf("%d - %d \n" ,curr->data ,freq);
+        temp = temp->next;
+        freq = 1;
+    }
+    if (temp->next== NULL)
+    {
+        printf("1");
     }
 }
 
@@ -75,9 +75,7 @@ int main()
     scanf("%d", &size1);
     head1 = createList(size1);
 
-    sortLinklist(head1 , size1);
-
-    printList(head1);
+    maxOcurrence(head1,size1);
 
     return 0;
 }

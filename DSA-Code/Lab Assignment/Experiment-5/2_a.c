@@ -41,16 +41,14 @@ void printList(struct node * head){
 }
 
 struct node * reverseList(struct node * head){
-   struct node * curr = head;
-   struct node * prev = NULL;
-   while (curr!=NULL)
-   {
-       struct node * next = curr->next;
-       curr->next = prev;
-       prev = curr;
-       curr = next;
-   }
-   return prev;
+   if(head == NULL || head->next == NULL)
+    return head ;
+
+    struct node * rest_head = reverseList(head->next);
+    struct node * rest_tail = head->next;
+    rest_tail->next = head;
+    head->next = NULL;
+    return rest_head;
 }
 
 int main(){
