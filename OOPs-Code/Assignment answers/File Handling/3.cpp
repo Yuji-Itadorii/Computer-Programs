@@ -6,6 +6,7 @@ using namespace std;
 
 int main()
 {
+    int i = 0;
     DIR *d;
     struct dirent *dir;
     d = opendir("D:\\Github Repo\\Programs\\OOPs-Code\\Assignment answers\\File Handling\\Files");
@@ -16,32 +17,55 @@ int main()
     {
         while ((dir = readdir(d)) != NULL)
         {
-            if (dir->d_name == "midQues.txt")
-                continue;
+
             int l = strlen(dir->d_name);
-            ofstream fout;
-            fout.open("midQues.txt", ios::app);
 
             if (dir->d_name[l - 1] == 't' && dir->d_name[l - 2] == 'x')
             {
 
-                fstream fin;
-                string line;
-                fin.open(dir->d_name);
+                ifstream ifiles1;
+                fstream ifilet;
 
-                getline(fin, line);
-                fstream fout;
-                cout << ". ";
-                fout.open("midQues.txt", ios::app);
+                char ch, fname1[100];
 
-                fout << line << endl;
+                strcpy(fname1, dir->d_name);
+                cout<<fname1<<dir->d_name;
 
-                fin.close();
+                ifiles1.open(fname1);
+                // ifiles2.open(fname2);
+
+                if (!ifiles1)
+                {
+                    perror("\nError Message in file1111 ");
+                    cout << "\nPress any key to exit...\n";
+
+                    exit(EXIT_FAILURE);
+                }
+
+                ifilet.open("lol.txt",  ios::out);
+
+                if (!ifilet)
+                {
+                    perror("\nError Message ");
+                    cout << "\nPress any key to exit...\n";
+
+                    exit(EXIT_FAILURE);
+                }
+
+                while (ifiles1.eof() == 0)
+                {
+                    ifiles1.get(ch);
+                    ifilet.put(ch);
+                }
+
+                ifilet << endl;
+
+
+                ifiles1.close();
+                ifilet.close();
+
             }
-
-            // printf("%s\n",dir->d_name);
         }
-
         closedir(d);
         cout << endl
              << "file copied succesfully" << endl;

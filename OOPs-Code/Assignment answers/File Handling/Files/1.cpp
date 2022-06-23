@@ -41,14 +41,16 @@ int main()
 
         while(ifiles1.eof()==0)
         {
-                ifiles1>>ch;
-                ifilet<<ch;
+                ifiles1.get(ch);
+                ifilet.put(ch);
         }
+
+        ifilet<<endl;
 
         while(ifiles2.eof()==0)
         {
-                ifiles2>>ch;
-                ifilet<<ch;
+                ifiles2.get(ch);
+                ifilet.put(ch);
         }
 
         cout<<"\nThe two files were merged into "<<fname3<<" file successfully....!!\n";
