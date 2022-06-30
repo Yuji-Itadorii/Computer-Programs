@@ -1,0 +1,60 @@
+Experiment
+6 (Stacks and Queues)
+
+
+      I.         
+(a) WAP to implement Stack ADT using
+Arrays which has basic operations as Create(), IsEmpty(), Push(), Pop(),
+IsFull() with appropriate prototype to a functions.
+
+
+(b)
+WAP to evaluate a given postfix expression using stack ADT.
+
+
+   
+II.         
+(a) WAP to check the given string is
+palindrome using stack.
+
+
+(b) WAP to check the given expression
+is correctly parenthesized.
+
+
+    III.         
+WAP
+to Implement two overlapping Stacks, facing in opposite directions, using an Array and
+Check for Overflow & Underflow conditions.
+
+
+  IV.         
+(a) WAP to transform infix expression into
+equivalent postfix expression using stack. Also use the user defined operators,
+$,#, etc, with appropiate priorities. Eg. A+(B*C- D/E$F)*G)*H, {*,/} > $
+> {+,-}
+
+
+(b)
+WAP to transform infix expression into equivalent prefix expression, similar as
+above.
+
+
+    V.         
+(a) WAP to implement Queue ADT using
+Arrays with the basic functions of Create(), IsEmpty(), Insert(), Delete() and
+IsFull() with suitable prototype to a functions.
+
+
+(b)
+WAP to implement Queue using Stacks.
+
+
+  VI.         
+(a) WAP to implement 2 overlapping queues
+in an Array of size ‘N’. There are facing in opposite direction to eachother.
+Give IsEmpty(i), Insert(i), Delete(i) and IsFull(i) routines for ith queue.   
+
+
+(b)
+WAP to implement Dequeue using Arrays with all the basic operations.
