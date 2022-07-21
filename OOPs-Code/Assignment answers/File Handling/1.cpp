@@ -62,13 +62,6 @@ void printList(node *head)
     }
 }
 
-void copystring(char str[20] , node * temp){
-    for (int i = 0; i < temp->data.size(); i++)
-    {
-        str[i] = temp->data[i];
-    }
-}
-
 int main(void)
 {
     node *head;
