@@ -1,6 +1,6 @@
 #include<iostream>
 // #include<algorithm>
-// change by deepak
+
 #include<math.h>
 using namespace std;
 class Point1 {
