@@ -1,4 +1,4 @@
-// https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
+// https://practice.geeksforgeeks.org/problems/median-of-bst/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
 //{ Driver Code Starts
 #include <bits/stdc++.h>
@@ -18,6 +18,8 @@ struct Node
         left = right = NULL;
     }
 };
+
+float findMedian(struct Node *node);
 
 // Function to Build Tree
 Node *buildTree(string str)
@@ -86,9 +88,32 @@ Node *buildTree(string str)
     return root;
 }
 
-// } Driver Code Ends
-/*Complete the function below
+int main()
+{
 
+    int t;
+    string tc;
+    getline(cin, tc);
+    t = stoi(tc);
+    // cout << t << endl;
+    while (t--)
+    {
+        string s;
+        getline(cin, s);
+        Node *root = buildTree(s);
+
+        // getline(cin, s);
+
+        cout << findMedian(root) << endl;
+
+        // cout<<"~"<<endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
+
+/*
+Structure of the binary Search Tree is as
 struct Node {
     int data;
     Node *left;
@@ -100,82 +125,29 @@ struct Node {
     }
 };
 */
-
-class Solution
+// your task is to complete the Function
+// Function should return median of the BST
+void inorder(Node *root, vector<int> &arr)
 {
-public:
-    // Return the Kth smallest element in the given BST
-    int KthSmallestElement(Node *root, int k)
-    {
-        Node *curr = root;
-        int count = 0;
-        int ksmall = -1;
-
-        while (curr != NULL)
-        {
-            if (curr->left == NULL)
-            {
-                count++;
-
-                if (count == k)
-                {
-                    ksmall = curr->data;
-                }
-
-                curr = curr->right;
-            }
-            else
-            {
-                Node *prev = curr->left;
-                while (prev->right && prev->right != curr)
-                {
-                    prev = prev->right;
-                }
-
-                if (prev->right == NULL)
-                {
-                    prev->right = curr;
-                    curr = curr->left;
-                }
-                else
-                {
-                    prev->right = NULL;
-                    count++;
-
-                    if (count == k)
-                    {
-                        ksmall = curr->data;
-                    }
-                    curr = curr->right;
-                }
-            }
-        }
-
-        return ksmall;
-    }
-};
-
-//{ Driver Code Starts.
-int main()
-{
-
-    int t;
-    string tc;
-    getline(cin, tc);
-    t = stoi(tc);
-    while (t--)
-    {
-        string s;
-        getline(cin, s);
-        Node *root = buildTree(s);
-
-        getline(cin, s);
-        int k = stoi(s);
-        //  getline(cin, s);
-        Solution obj;
-        cout << obj.KthSmallestElement(root, k) << endl;
-        // cout<<"~"<<endl;
-    }
-    return 0;
+    if (!root)
+        return;
+    inorder(root->left, arr);
+    arr.push_back(root->data);
+    inorder(root->right, arr);
+    return;
 }
-// } Driver Code Ends
+
+float findMedian(struct Node *root)
+{
+    // Code here
+    vector<int> arr;
+    inorder(root, arr);
+    int n = arr.size();
+    double s = arr[n / 2];
+    if (n % 2 == 0)
+    {
+        s += arr[(n / 2) - 1];
+        s = s / 2;
+    }
+    return s;
+}

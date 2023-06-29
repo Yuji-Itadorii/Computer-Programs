@@ -1,16 +1,16 @@
-// https://practice.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
+// https://practice.geeksforgeeks.org/problems/brothers-from-different-root/1
 
 //{ Driver Code Starts
+// Initial Template for C++
+
 #include <bits/stdc++.h>
 using namespace std;
-#define MAX_HEIGHT 100000
 
-// Tree Node
 struct Node
 {
     int data;
-    Node *left;
-    Node *right;
+    struct Node *left;
+    struct Node *right;
 
     Node(int val)
     {
@@ -57,7 +57,7 @@ Node *buildTree(string str)
         if (currVal != "N")
         {
 
-            // Create the left child for the current node
+            // Create the left child for the current Node
             currNode->left = new Node(stoi(currVal));
 
             // Push it to the queue
@@ -87,12 +87,14 @@ Node *buildTree(string str)
 }
 
 // } Driver Code Ends
-/*Complete the function below
+// User function Template for C++
 
-struct Node {
+/*Structure of the Node of the BST is as
+struct Node
+{
     int data;
-    Node *left;
-    Node *right;
+    struct Node *left;
+    struct Node *right;
 
     Node(int val) {
         data = val;
@@ -104,78 +106,65 @@ struct Node {
 class Solution
 {
 public:
-    // Return the Kth smallest element in the given BST
-    int KthSmallestElement(Node *root, int k)
+    void inorder(Node *root, vector<int> &s)
     {
-        Node *curr = root;
-        int count = 0;
-        int ksmall = -1;
-
-        while (curr != NULL)
+        if (root == NULL)
         {
-            if (curr->left == NULL)
-            {
-                count++;
-
-                if (count == k)
-                {
-                    ksmall = curr->data;
-                }
-
-                curr = curr->right;
-            }
-            else
-            {
-                Node *prev = curr->left;
-                while (prev->right && prev->right != curr)
-                {
-                    prev = prev->right;
-                }
-
-                if (prev->right == NULL)
-                {
-                    prev->right = curr;
-                    curr = curr->left;
-                }
-                else
-                {
-                    prev->right = NULL;
-                    count++;
-
-                    if (count == k)
-                    {
-                        ksmall = curr->data;
-                    }
-                    curr = curr->right;
-                }
-            }
+            return;
         }
 
-        return ksmall;
+        inorder(root->left, s);
+        s.push_back(root->data);
+        inorder(root->right, s);
+    }
+
+    int countPairs(Node *root1, Node *root2, int x)
+    {
+        vector<int> vec1;
+        inorder(root1, vec1);
+        vector<int> vec2;
+        inorder(root2, vec2);
+
+        // now find sum using 2 pointer Approach
+        int i = 0;
+        int j = vec2.size() - 1;
+        int count = 0;
+        while (i < vec1.size() && j >= 0)
+        {
+            int sum = vec1[i] + vec2[j];
+            if (sum == x)
+                count++, i++, j--;
+            else if (sum < x)
+                i++;
+            else
+                j--;
+        }
+
+        return count;
     }
 };
 
 //{ Driver Code Starts.
+
 int main()
 {
-
     int t;
-    string tc;
-    getline(cin, tc);
-    t = stoi(tc);
+    cin >> t;
+    cin.ignore();
     while (t--)
     {
-        string s;
-        getline(cin, s);
-        Node *root = buildTree(s);
-
-        getline(cin, s);
-        int k = stoi(s);
-        //  getline(cin, s);
-        Solution obj;
-        cout << obj.KthSmallestElement(root, k) << endl;
-        // cout<<"~"<<endl;
+        string tree1, tree2;
+        getline(cin, tree1);
+        getline(cin, tree2);
+        Node *root1 = buildTree(tree1);
+        Node *root2 = buildTree(tree2);
+        int x;
+        cin >> x;
+        cin.ignore();
+        Solution ob;
+        cout << ob.countPairs(root1, root2, x) << "\n";
     }
     return 0;
 }
+
 // } Driver Code Ends
