@@ -1,5 +1,3 @@
-// https://practice.geeksforgeeks.org/problems/median-of-bst/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
-
 //{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
@@ -127,27 +125,122 @@ struct Node {
 */
 // your task is to complete the Function
 // Function should return median of the BST
-void inorder(Node *root, vector<int> &arr)
+int countNode(Node *root)
 {
-    if (!root)
-        return;
-    inorder(root->left, arr);
-    arr.push_back(root->data);
-    inorder(root->right, arr);
-    return;
+    int count = 0;
+
+    Node *current = root, *pre;
+
+    if (root == NULL)
+    {
+        return 0;
+    }
+
+    while (current != NULL)
+    {
+        if (current->left == NULL)
+        {
+            count++;
+
+            current = current->right;
+        }
+        else
+        {
+
+            pre = current->left;
+
+            while (pre->right != NULL && pre->right != current)
+            {
+                pre = pre->right;
+            }
+
+            if (pre->right == NULL)
+            {
+                pre->right = current;
+                current = current->left;
+            }
+            else
+            {
+                pre->right = NULL;
+
+                // Increment count if the current
+                // node is to be visited
+                count++;
+                current = current->right;
+            }
+        }
+    }
+
+    return count;
 }
 
 float findMedian(struct Node *root)
 {
     // Code here
-    vector<int> arr;
-    inorder(root, arr);
-    int n = arr.size();
-    double s = arr[n / 2];
-    if (n % 2 == 0)
+    int count = countNode(root);
+    int currCount = 0;
+    struct Node *current = root, *pre, *prev;
+
+    while (current != NULL)
     {
-        s += arr[(n / 2) - 1];
-        s = s / 2;
-    }
-    return s;
+        if (current->left == NULL)
+        {
+            // count current node
+            currCount++;
+
+            // check if current node is the median
+            // Odd case
+            if (count % 2 != 0 && currCount == (count + 1) / 2)
+                return current->data;
+
+            // Even case
+            else if (count % 2 == 0 && currCount == (count / 2) + 1)
+                return (float)(prev->data + current->data) / (float)2;
+
+            // Update prev for even no. of nodes
+            prev = current;
+
+            // Move to the right
+            current = current->right;
+        }
+        else
+        {
+            /* Find the inorder predecessor of current */
+            pre = current->left;
+            while (pre->right != NULL && pre->right != current)
+                pre = pre->right;
+
+            /* Make current as right child of its inorder predecessor */
+            if (pre->right == NULL)
+            {
+                pre->right = current;
+                current = current->left;
+            }
+
+            /* Revert the changes made in if part to restore the original
+              tree i.e., fix the right child of predecessor */
+            else
+            {
+                pre->right = NULL;
+
+                prev = pre;
+
+                // Count current node
+                currCount++;
+
+                // Check if the current node is the median
+                if (count % 2 != 0 && currCount == (count + 1) / 2)
+                    return current->data;
+
+                else if (count % 2 == 0 && currCount == (count / 2) + 1)
+                    return (float)(prev->data + current->data) / (float)2;
+
+                // update prev node for the case of even
+                // no. of nodes
+                prev = current;
+                current = current->right;
+
+            } /* End of if condition pre->right == NULL */
+        }     /* End of if condition current->left == NULL*/
+    }         /* End of while */
 }
