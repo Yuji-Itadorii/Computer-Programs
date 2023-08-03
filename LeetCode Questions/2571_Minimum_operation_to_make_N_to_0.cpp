@@ -1,0 +1,36 @@
+// https://leetcode.com/problems/minimum-operations-to-reduce-an-integer-to-0/description/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution
+{
+public:
+    int minOperations(int n)
+    {
+        int res = 0;
+        while (n > 0)
+        {
+            if ((n & 3) == 3)
+            {
+                n++;
+                res++;
+            }
+            else
+            {
+                res += n & 1;
+                n >>= 1;
+            }
+        }
+        return res;
+    }
+};
+
+int main()
+{
+
+    Solution s;
+    cout << s.minOperations(6) << endl;
+
+    return 0;
+}
