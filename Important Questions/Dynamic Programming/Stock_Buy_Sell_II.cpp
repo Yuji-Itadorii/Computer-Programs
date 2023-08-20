@@ -29,44 +29,21 @@ public:
 
 // } Driver Code Ends
 
-// User function template for C++
-
-// This function finds the buy sell schedule for maximum profit
-void stockBuySell(int price[], int n)
+class Solution
 {
-    // code here
-    vector<int> buy, sell;
-
-    int i = 0, ct = 0;
-    while (i < n - 1)
+public:
+    int stockBuyAndSell(int n, vector<int> &price)
     {
-        while ((i < n - 1) && (price[i] >= price[i + 1]))
-            i++;
-
-        if (i == n - 1)
-            break;
-
-        buy.push_back(i++);
-
-        while ((i < n) && (price[i] >= price[i - 1]))
-            i++;
-
-        sell.push_back(i - 1);
-        ct++;
-    }
-
-    if (ct == 0)
-        cout << "No Profit" << endl;
-
-    else
-    {
-        for (int j = 0; j < ct; j++)
+        // code here
+        int profit = 0;
+        for (int i = 1; i < n; i++)
         {
-            cout << "(" << buy[j] << " " << sell[j] << ") ";
+            if (price[i] > price[i - 1])
+                profit += price[i] - price[i - 1];
         }
-        cout << endl;
+        return profit;
     }
-}
+};
 
 //{ Driver Code Starts.
 
