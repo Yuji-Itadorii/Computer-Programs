@@ -20,6 +20,7 @@ public:
             // there exists rotation; the middle element is in the left part of the array
             if (nums[mid] > nums[r])
             {
+
                 if (target < nums[mid] && target >= nums[l])
                     r = mid - 1;
                 else
@@ -54,5 +55,5 @@ int main()
 
     cout << s.search(nums, 0) << endl;
 
-        return 0;
+    return 0;
 }
