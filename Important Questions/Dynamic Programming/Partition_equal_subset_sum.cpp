@@ -1,8 +1,5 @@
 // https://practice.geeksforgeeks.org/problems/subset-sum-problem2014/1
 
-//{ Driver Code Starts
-// Initial Template for C++
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -12,44 +9,44 @@ using namespace std;
 class Solution
 {
 private:
-    bool solve(int n, int arr[], int sum, vector<vector<int>> &dp)
+    bool solve(int n, int arr[], int index, int sum, vector<vector<int>> &dp)
     {
-        if (sum == 0)
+        if (sum < 0)
         {
-            return true;
+            return 0;
         }
 
-        if (n == 0)
+        if (index >= n)
         {
-            return false;
+            if (sum == 0)
+                return 1;
+            return 0;
         }
 
-        if (dp[n][sum] != -1)
+        if (dp[index][sum] != -1)
         {
-            return dp[n][sum];
+            return dp[index][sum];
         }
 
-        return dp[n][sum] = solve(n - 1, arr, sum, dp) || solve(n - 1, arr, sum - arr[n - 1], dp);
+        return dp[index][sum] = solve(n, arr, index + 1, sum, dp) || solve(n, arr, index + 1, sum - arr[index], dp);
     }
 
 public:
     int equalPartition(int n, int arr[])
     {
         // code here
-        long long sum = 0;
+        int sum = 0;
         for (int i = 0; i < n; i++)
         {
             sum += arr[i];
         }
-
-        if (sum % 2 == 1)
+        if (sum & 1)
+            return 0;
+        else
         {
-            return false;
+            vector<vector<int>> dp(n + 1, vector<int>(sum / 2 + 1, -1));
+            return solve(n, arr, 0, sum / 2, dp);
         }
-
-        vector<vector<int>> dp(n + 1, vector<int>((sum / 2) + 1, -1));
-
-        return solve(n, arr, sum / 2, dp);
     }
 };
 
